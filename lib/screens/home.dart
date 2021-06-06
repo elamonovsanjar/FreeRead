@@ -3,7 +3,6 @@ import 'package:free_read/screens/books.dart';
 import 'package:free_read/screens/headline.dart';
 import 'package:free_read/screens/homescreen.dart';
 import 'package:free_read/screens/sources.dart';
-
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -52,33 +51,35 @@ class _HomeState extends State<Home> {
       body: _children[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-
-        items: [ 
+         type: BottomNavigationBarType.fixed,
+         backgroundColor:Colors.grey[850],
+         fixedColor: Colors.white,
+         unselectedItemColor: Colors.grey,
+         selectedFontSize: 16,
+         unselectedFontSize: 12,
+         items:
+          [
 
           new BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
             label: 'Home',
-            backgroundColor: Colors.grey[800],
+            icon: Icon(Icons.home_outlined),
           ),
           new BottomNavigationBarItem(
+              label: 'Headlines',
             icon: Icon(Icons.topic_outlined),
-            label: 'Headlines',
-            backgroundColor: Colors.grey[800]
           ),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.cake_outlined),
               label: 'Sources',
-              backgroundColor: Colors.grey[800]
+              icon: Icon(Icons.cake_outlined),
           ),
           new BottomNavigationBarItem(
               icon: Icon(Icons.book_outlined),
               label: 'Books',
-              backgroundColor: Colors.grey[800]
           ),
         ],
-        onTap: (index){
+        onTap: (index) {
           _incrementTab(index);
-        },
+        }
       ),
     );
   }
