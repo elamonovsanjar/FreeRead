@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 class CategoryTile extends StatelessWidget {
-  //final imageUrl, categoriesName;
-  //CategoryTile(this.imageUrl,this.categoriesName);
+  final imageUrl, categoriesName;
+  CategoryTile(this.imageUrl,this.categoriesName);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,12 +10,12 @@ class CategoryTile extends StatelessWidget {
       child: Column(
         children: [
           Text('Headline Here'),
-          // Stack(
-          //   children: <Widget>[
-          //     Image.network(imageUrl,width: 16,height: 120,),
-          //
-          //   ],
-          // ),
+          Stack(
+            children: <Widget>[
+              Image.network(imageUrl,width: 120,height: 60,),
+
+            ],
+          ),
         ],
       ),
     );

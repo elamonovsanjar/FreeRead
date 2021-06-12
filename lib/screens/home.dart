@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   int currentIndex=0;
   final List<Widget> _children=[
     HomeScreen(),
-    CategoryTile(),
+    CategoryTile('blabla.com','something'),//include the link and name
     Sources(),
     Books(),
   ];
