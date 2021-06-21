@@ -10,6 +10,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Container(
       child:Text('Home here')
+          //here will be featured cards
     );
   }
 }
