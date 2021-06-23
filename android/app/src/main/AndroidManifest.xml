@@ -2,7 +2,7 @@
     package="com.example.free_read">
    <application
         android:label="Free Read"
-        android:icon="@mipmap/freeread">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:free_read/helpers/data.dart';
+import 'package:free_read/models/category_model.dart';
 import 'package:free_read/screens/books.dart';
 import 'package:free_read/screens/news.dart';
 import 'package:free_read/screens/homescreen.dart';
@@ -10,24 +12,15 @@ class Home extends StatefulWidget {
 
 }
 class _HomeState extends State<Home> {
-  PageController _pageController =PageController(
-
-    initialPage: 0,
-  );
-  @override
-  void dispose(){
-    _pageController.dispose();
-    super.dispose();
-  }
-
   int currentIndex=0;
-
-
   final List<Widget> _children=[
     HomeScreen(),
-    CategoryTile('https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YnVzaW5lc3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60','Niz'),
+    CategoryTile(
+        // 'https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YnVzaW5lc3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60','Niz'
+    ),
     Books(),
   ];
+
 
   void _incrementTab(index){
     setState(() {
@@ -37,8 +30,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return PageView(
-      controller: _pageController,
-
       children: [
         Scaffold(
         appBar: AppBar(

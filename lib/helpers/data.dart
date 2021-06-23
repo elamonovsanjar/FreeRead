@@ -38,9 +38,6 @@ List<CategoryModel> getCategories() {
 
   categoryModel=new CategoryModel();
 
-
-
-
-
+  return category;
 
 }
