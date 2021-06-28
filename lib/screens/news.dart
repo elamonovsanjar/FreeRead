@@ -3,20 +3,17 @@ import 'package:free_read/helpers/data.dart';
 import 'package:free_read/models/category_model.dart';
 
 class CategoryTile extends StatefulWidget {
-  // final imageUrl, categoriesName;
+  final imageUrl, categoriesName;
   CategoryTile(
-      // this.imageUrl,this.categoriesName
-      );
+      this.imageUrl,this.categoriesName);
 
-
- // @override()
   State<CategoryTile> createState() => _CategoryTileState();
 }
 
 class _CategoryTileState extends State<CategoryTile> {
 
 
-  List<CategoryModel> categories = new List<CategoryModel>();
+  List<CategoryModel> categories = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -31,10 +28,9 @@ class _CategoryTileState extends State<CategoryTile> {
     return Container(
       child: Column(
         children: [
-          Text('News Here'),
           Stack(
             children: <Widget>[
-              //Image.network(widget.imageUrl,width: 120,height: 60,),
+              Image.network(widget.imageUrl,width: 120,height: 60,),
             ],
           ),
         ],
