@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:free_read/screens/books.dart';
-import 'package:free_read/screens/news.dart';
-import 'package:free_read/screens/homescreen.dart';
+import 'package:free_read/helpers/data.dart';
+import 'package:free_read/models/category_model.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,20 +9,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentIndex = 0;
-  final List<Widget> _children = [
-    HomeScreen(),
-    CategoryTile(
-        'https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YnVzaW5lc3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        'Biz'
-    ),
-    Books(),
-  ];
-
-  void _incrementTab(index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
+  List<bool> numberTruthList = [false, true, true, true, true, true, true];
 
   @override
   Widget build(BuildContext context) {
@@ -31,18 +17,17 @@ class _HomeState extends State<Home> {
       children: [
         Scaffold(
           appBar: AppBar(
-            //automaticallyImplyLeading: false,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Free',
+                  'Real',
                   style: TextStyle(
                     color: Colors.grey[800],
                   ),
                 ),
                 Text(
-                  'Read',
+                  'News',
                   style: TextStyle(
                     color: Colors.blue,
                   ),
@@ -53,34 +38,64 @@ class _HomeState extends State<Home> {
             centerTitle: true,
             backgroundColor: Colors.white,
           ),
-          body: _children[currentIndex],
-          bottomNavigationBar: BottomNavigationBar(
-              currentIndex: currentIndex,
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.grey[850],
-              fixedColor: Colors.white,
-              unselectedItemColor: Colors.grey,
-              selectedFontSize: 16,
-              unselectedFontSize: 12,
-              items: [
-                new BottomNavigationBarItem(
-                  label: 'Home',
-                  icon: Icon(Icons.home_outlined),
+          body: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: ListView.builder(
+                    itemCount: getCategories().length,
+                      itemBuilder: (context, index){
+                      return CategoryTile(
+                        //imageUrl: getCategories().,
+                      );
+                      }
+                  ),
                 ),
-                new BottomNavigationBarItem(
-                  label: 'News',
-                  icon: Icon(Icons.topic_outlined),
-                ),
-                new BottomNavigationBarItem(
-                  icon: Icon(Icons.book_outlined),
-                  label: 'Books',
-                ),
+
+                // _children[currentIndex],
               ],
-              onTap: (index) {
-                _incrementTab(index);
-              }),
+            ),
+          ),
         ),
       ],
+    );
+  }
+}
+
+class CategoryTile extends StatefulWidget {
+  final imageUrl, categoriesName;
+
+  CategoryTile({this.imageUrl, this.categoriesName});
+
+  State<CategoryTile> createState() => _CategoryTileState();
+}
+
+class _CategoryTileState extends State<CategoryTile> {
+  List<CategoryModel> categories = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    categories = getCategories();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Stack(
+            children: <Widget>[
+              Image.network(
+                widget.imageUrl,
+                width: 120,
+                height: 60,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
