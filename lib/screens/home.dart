@@ -13,9 +13,10 @@ class _HomeState extends State<Home> {
   int currentIndex=0;
   final List<Widget> _children=[
     HomeScreen(),
-    CategoryTile('blabla.com','something'),//include the link and name
-    Sources(),
+    CategoryTile("https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",'Business'),//include the link and name
     Books(),
+    Sources(),
+
   ];
 
   void _incrementTab(index){
@@ -59,23 +60,22 @@ class _HomeState extends State<Home> {
          unselectedFontSize: 12,
          items:
           [
-
           new BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home_outlined),
           ),
           new BottomNavigationBarItem(
-              label: 'Headlines',
+              label: 'News',
             icon: Icon(Icons.topic_outlined),
-          ),
-          new BottomNavigationBarItem(
-              label: 'Sources',
-              icon: Icon(Icons.cake_outlined),
           ),
           new BottomNavigationBarItem(
               icon: Icon(Icons.book_outlined),
               label: 'Books',
           ),
+            new BottomNavigationBarItem(
+              label: 'Sources',
+              icon: Icon(Icons.cake_outlined),
+            ),
         ],
         onTap: (index) {
           _incrementTab(index);

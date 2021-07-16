@@ -1,22 +1,23 @@
 import 'package:flutter/cupertino.dart';
 
 class CategoryTile extends StatelessWidget {
-  final imageUrl, categoriesName;
-  CategoryTile(this.imageUrl,this.categoriesName);
+  final imageUrl, categoryName;
+  CategoryTile(this.imageUrl,this.categoryName);
   @override
   Widget build(BuildContext context) {
     return Container(
 
-      child: Column(
-        children: [
-          Text('Headline Here'),
-          Stack(
-            children: <Widget>[
-              Image.network(imageUrl,width: 120,height: 60,),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: <Widget>[
+                Image.network(imageUrl,width: 200,height: 100,),
 
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
